@@ -8,22 +8,35 @@ import emberPowerSelectIsSelected from 'ember-power-select/helpers/ember-power-s
 export default class PowerTimePickerOptions extends OptionsComponent {
   <template>
     {{! template-lint-disable require-context-role }}
-    <ul role="listbox" {{didInsert this.addHandlers}} {{willDestroy this.removeHandlers}} ...attributes>
+    <ul
+      role='listbox'
+      {{didInsert this.addHandlers}}
+      {{willDestroy this.removeHandlers}}
+      ...attributes
+    >
       {{#if @select.loading}}
         {{#if @loadingMessage}}
-          <li class="ember-power-select-option ember-power-select-option--loading-message" role="option" aria-selected={{false}}>{{@loadingMessage}}</li>
+          <li
+            class='ember-power-select-option ember-power-select-option--loading-message'
+            role='option'
+            aria-selected={{false}}
+          >{{@loadingMessage}}</li>
         {{/if}}
       {{/if}}
       <VerticalCollection
         @items={{@options}}
-        @estimateHeight="28px" as |opt index|>
-        <li class="ember-power-select-option"
-          id="{{@select.uniqueId}}-{{@groupIndex}}{{index}}"
-          aria-selected="{{emberPowerSelectIsSelected opt @select.selected}}"
-          aria-disabled={{if opt.disabled "true"}}
-          aria-current="{{eq opt @select.highlighted}}"
-          data-option-index="{{@groupIndex}}{{index}}"
-          role="option">
+        @estimateHeight='28px'
+        as |opt index|
+      >
+        <li
+          class='ember-power-select-option'
+          id='{{@select.uniqueId}}-{{@groupIndex}}{{index}}'
+          aria-selected='{{emberPowerSelectIsSelected opt @select.selected}}'
+          aria-disabled={{if opt.disabled 'true'}}
+          aria-current='{{eq opt @select.highlighted}}'
+          data-option-index='{{@groupIndex}}{{index}}'
+          role='option'
+        >
           {{yield opt @select}}
         </li>
       </VerticalCollection>

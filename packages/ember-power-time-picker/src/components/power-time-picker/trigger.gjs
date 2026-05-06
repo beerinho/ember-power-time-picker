@@ -17,10 +17,6 @@ export default class PowerTimePickerTrigger extends Component {
       return (this.text = this.getSelectedAsText());
     }
 
-    /*
-     * We need to update the input field with value of the selected option whenever we're closing
-     * the select box.
-     */
     if (oldSelect.isOpen && !newSelect.isOpen) {
       let input = document.querySelector(
         `#ember-power-time-picker-input-${newSelect.uniqueId}`,
@@ -80,20 +76,21 @@ export default class PowerTimePickerTrigger extends Component {
       highlighted &&
       this.args.select.selected !== highlighted
     ) {
-      // TAB
       this.args.select.actions.select(highlighted);
     }
   }
 
   <template>
     {{! template-lint-disable no-pointer-down-event-binding }}
-    <input type="text"
-      value={{this.text}} id="ember-power-time-picker-input-{{@select.uniqueId}}"
-      class="ember-power-time-picker-input ember-power-select-search-input"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
+    <input
+      type='text'
+      value={{this.text}}
+      id='ember-power-time-picker-input-{{@select.uniqueId}}'
+      class='ember-power-time-picker-input ember-power-select-search-input'
+      autocomplete='off'
+      autocorrect='off'
+      autocapitalize='off'
+      spellcheck='false'
       placeholder={{@placeholder}}
       oninput={{@onInput}}
       onfocus={{this._handleFocus}}
@@ -102,6 +99,6 @@ export default class PowerTimePickerTrigger extends Component {
       onmousedown={{this._handleMousedown}}
       onkeydown={{this._handleKeyDown}}
       {{didUpdate this.selectDidUpdate @select}}
-    >
+    />
   </template>
 }

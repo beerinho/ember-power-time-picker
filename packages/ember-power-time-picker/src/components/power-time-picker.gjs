@@ -51,7 +51,6 @@ export default class PowerTimePicker extends Component {
     return options.sort();
   }
 
-  // from power-select.js
   scrollTo(option, select) {
     let optionsList = document.getElementById(
       `ember-power-select-options-${select.uniqueId}`,
@@ -66,7 +65,6 @@ export default class PowerTimePicker extends Component {
 
     let optionHeight = 28;
     let optionOffset = index * optionHeight;
-    // ensure element gets centered in options list
 
     scheduler.schedule('affect', () => {
       optionsList.scrollTop = Math.max(
@@ -145,7 +143,7 @@ export default class PowerTimePicker extends Component {
       @searchPlaceholder={{@searchPlaceholder}}
       @selected={{@selected}}
       @selectedItemComponent={{@selectedItemComponent}}
-      @tabindex="-1"
+      @tabindex='-1'
       @triggerClass={{@triggerClass}}
       @triggerComponent={{this.triggerComponent}}
       @triggerId={{@triggerId}}
