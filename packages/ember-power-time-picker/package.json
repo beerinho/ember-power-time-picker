@@ -12,10 +12,10 @@
     ".": "./dist/index.js",
     "./*": "./dist/*.js",
     "./test-support/helpers": "./dist/test-support/helpers.js",
-    "./addon-main.js": "./addon-main.cjs"
+    "./addon-main.js": "./addon-main.js"
   },
   "files": [
-    "addon-main.cjs",
+    "addon-main.js",
     "declarations",
     "dist"
   ],
@@ -89,7 +89,7 @@
   "ember-addon": {
     "version": 2,
     "type": "addon",
-    "main": "addon-main.cjs",
+    "main": "addon-main.js",
     "app-js": {
       "./components/power-time-picker.js": "./dist/_app_/components/power-time-picker.js"
     }
