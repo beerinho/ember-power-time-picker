@@ -11,6 +11,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./*": "./dist/*.js",
+    "./test-support/helpers": "./dist/test-support/helpers.js",
     "./addon-main.js": "./addon-main.cjs"
   },
   "files": [

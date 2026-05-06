@@ -23,7 +23,7 @@ export default {
     addon.publicEntrypoints([
       'components/*.js',
       'utils/*.js',
-      'test-support/**/*.js',
+      'test-support/helpers.js',
     ]),
 
     // These are the modules that should get reexported into the traditional
