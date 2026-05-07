@@ -3,6 +3,9 @@ import { schedule } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
+import { buildWaiter } from '@ember/test-waiters';
+
+const waiter = buildWaiter('ember-power-time-picker:trigger');
 
 export default class PowerTimePickerTrigger extends Component {
   @tracked text = '';
@@ -29,7 +32,11 @@ export default class PowerTimePickerTrigger extends Component {
     }
 
     if (newSelect.lastSearchedText !== oldSelect.lastSearchedText) {
-      schedule('actions', null, newSelect.actions.open);
+      const token = waiter.beginAsync();
+      schedule('actions', null, () => {
+        newSelect.actions.open();
+        waiter.endAsync(token);
+      });
     }
 
     if (oldSelect.selected !== newSelect.selected) {
@@ -44,7 +51,11 @@ export default class PowerTimePickerTrigger extends Component {
   @action
   _handleMousedown(e) {
     if (!this.args.select.isOpen) {
-      schedule('actions', null, this.args.select.actions.open);
+      const token = waiter.beginAsync();
+      schedule('actions', null, () => {
+        this.args.select.actions.open();
+        waiter.endAsync(token);
+      });
     }
     e.target.select();
     e.preventDefault();

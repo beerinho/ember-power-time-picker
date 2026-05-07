@@ -4,14 +4,42 @@ import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
 import VerticalCollection from '@html-next/vertical-collection/components/vertical-collection/component';
 import emberPowerSelectIsSelected from 'ember-power-select/helpers/ember-power-select-is-selected';
+import { action } from '@ember/object';
+import { buildWaiter } from '@ember/test-waiters';
+
+const waiter = buildWaiter('ember-power-time-picker:options');
 
 export default class PowerTimePickerOptions extends OptionsComponent {
+    token = null;
+
+  @action
+  handleDidInsert(element) {
+    this.token = waiter.beginAsync();
+    // VerticalCollection needs 2 ticks to measure and render visible items
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        waiter.endAsync(this.token);
+        this.token = null;
+      })
+    });
+    this.addHandlers(element); // defer to OptionsComponent
+  }
+
+  @action
+  handleWillDestroy(element) {
+    if (this.token) {
+      waiter.endAsync(this.token);
+      this.token = null;
+    }
+    this.removeHandlers(element); // defer to OptionsComponent
+  }
+
   <template>
     {{! template-lint-disable require-context-role }}
     <ul
       role='listbox'
-      {{didInsert this.addHandlers}}
-      {{willDestroy this.removeHandlers}}
+      {{didInsert this.handleDidInsert}}
+      {{willDestroy this.handleWillDestroy}}
       ...attributes
     >
       {{#if @select.loading}}
