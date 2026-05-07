@@ -40,26 +40,13 @@
     "ember-truth-helpers": "^4.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.6",
-    "@babel/eslint-parser": "^7.23.3",
     "@babel/runtime": "^7.17.0",
     "@embroider/addon-dev": "^4.1.0",
     "@eslint/compat": "^2.0.5",
-    "@eslint/eslintrc": "^3.3.5",
-    "@eslint/js": "^10.0.1",
     "@rollup/plugin-babel": "^6.0.4",
     "babel-plugin-ember-template-compilation": "^2.2.1",
     "ember-eslint-parser": "^0.11.3",
-    "ember-template-lint": "^5.13.0",
-    "eslint": "^9.39.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-ember": "^13.2.1",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^17.24.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "globals": "^17.6.0",
-    "prettier": "3.8.3",
-    "prettier-plugin-ember-template-tag": "1.1.0",
     "rollup": "^4.9.1",
     "rollup-plugin-copy": "^3.5.0"
   },
@@ -67,7 +54,7 @@
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^2 || ^3",
     "@html-next/vertical-collection": "^4.0.0",
-    "ember-raf-scheduler": "0.4.1",
+    "ember-raf-scheduler": "0.5.1",
     "moment": "^2"
   },
   "peerDependenciesMeta": {
