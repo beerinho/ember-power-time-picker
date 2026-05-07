@@ -32,4 +32,4 @@ jobs:
         with:
           branch: dist
           token: ${{ secrets.GITHUB_TOKEN }}
-          working-directory: '@lan0/ember-power-time-picker'
+          working-directory: 'packages/ember-power-time-picker'

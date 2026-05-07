@@ -3,7 +3,6 @@
 ## Installation
 
 - `git clone <repository-url>`
-- `cd lan0-ember-power-time-picker`
 - `pnpm install`
 
 ## Linting
@@ -13,8 +12,7 @@
 
 ## Building the addon
 
-- `cd @lan0/ember-power-time-picker`
-- `pnpm build`
+- `pnpm build` - this will target the addon package
 
 ## Running tests
 
