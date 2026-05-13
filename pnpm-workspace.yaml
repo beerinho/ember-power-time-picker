@@ -1,0 +1,3 @@
+packages:
+  - 'ember-power-time-picker'
+  - 'test-app'
