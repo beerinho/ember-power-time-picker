@@ -1,6 +1,6 @@
 # @lan0/ember-power-time-picker
 
-[Short description of the addon.]
+Shows a time-picker based on power-select that behaves like the time pickers in Google/Outlook Web calendar.
 
 ## Compatibility
 
