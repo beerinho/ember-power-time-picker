@@ -1,6 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, triggerKeyEvent, fillIn, click, settled } from '@ember/test-helpers';
+import {
+  render,
+  triggerKeyEvent,
+  fillIn,
+  click,
+  waitUntil,
+} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { selectTime } from '@lan0/ember-power-time-picker/test-support/helpers';
 
@@ -261,14 +267,16 @@ module('Integration | Component | power-time-picker', function (hooks) {
     assert.dom(options[0]).hasText('10:00');
     assert.dom(options[options.length - 1]).hasText('12:00');
 
-    await click('.ember-power-select-search-input');
-    await settled()
-
     this.set('minTime', '11:00');
     this.set('maxTime', '13:00');
 
-    await click('.ember-power-select-search-input');
-    await settled()
+    // we have to wait for the list to update after setting the min and max
+    await waitUntil(
+      () =>
+        document.querySelector('[data-option-index="0"]').textContent.trim() ===
+        '11:00',
+    );
+
     options = document.querySelectorAll('.ember-power-select-option');
     assert.dom(options[0]).hasText('11:00');
     assert.dom(options[options.length - 1]).hasText('13:00');
