@@ -10,7 +10,7 @@ import { buildWaiter } from '@ember/test-waiters';
 const waiter = buildWaiter('ember-power-time-picker:options');
 
 export default class PowerTimePickerOptions extends OptionsComponent {
-    token = null;
+  token = null;
 
   @action
   handleDidInsert(element) {
@@ -20,7 +20,7 @@ export default class PowerTimePickerOptions extends OptionsComponent {
       requestAnimationFrame(() => {
         waiter.endAsync(this.token);
         this.token = null;
-      })
+      });
     });
     this.addHandlers(element); // defer to OptionsComponent
   }
