@@ -5,13 +5,15 @@ import moment from 'moment';
 import roundTime from '../utils/round-time';
 import { indexOfOption } from 'ember-power-select/utils/group-utils';
 import { scheduler } from 'ember-raf-scheduler';
+import PowerTimePickerOptions from './power-time-picker/options';
+import PowerTimePickerTrigger from './power-time-picker/trigger';
 
 export default class PowerTimePicker extends Component {
   @tracked steps = this.args.steps ?? 5;
   @tracked triggerComponent =
-    this.args.triggerComponent ?? 'power-time-picker/trigger';
+    this.args.triggerComponent ?? PowerTimePickerTrigger;
   @tracked optionsComponent =
-    this.args.optionsComponent ?? 'power-time-picker/options';
+    this.args.optionsComponent ?? PowerTimePickerOptions;
 
   get minTime() {
     return this.args.minTime ?? '06:00';
