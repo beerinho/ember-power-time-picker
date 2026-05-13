@@ -3,19 +3,14 @@
 
 selected: {{this.time}}
 <PowerTimePicker
-  @minTime="06:00"
-  @maxTime="12:00"
-  @steps={{5}}
-  @selected={{this.time}}
-  @onChange={{fn (mut this.time)}}
+  @maxTime="12:00" @minTime="06:00" @onChange={{fn (mut this.time)}} @selected={{this.time}} @steps={{5}}
   as |time|>
   {{time}}
 </PowerTimePicker>
 <br>
 selected will be added to options:
 <PowerTimePicker
-  @selected="06:03"
-  @onChange={{fn (mut this.time)}}
+  @onChange={{fn (mut this.time)}} @selected="06:03"
   as |time|>
   {{time}}
 </PowerTimePicker>

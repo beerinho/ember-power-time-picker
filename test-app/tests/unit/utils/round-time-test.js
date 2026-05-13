@@ -1,5 +1,5 @@
-import roundTime from 'test-app/utils/round-time';
 import { module, test } from 'qunit';
+import roundTime from 'test-app/utils/round-time';
 
 module('Unit | Utility | round-time', function () {
   test('it does nothing by default', function (assert) {

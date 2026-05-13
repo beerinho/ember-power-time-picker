@@ -1,7 +1,7 @@
-import { module, test } from 'qunit';
 import { visit } from '@ember/test-helpers';
-import { setupApplicationTest } from 'ember-qunit';
 import { selectTime } from '@lan0/ember-power-time-picker/test-support/helpers';
+import { setupApplicationTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 module('Acceptance | smoke', function (hooks) {
   setupApplicationTest(hooks);
