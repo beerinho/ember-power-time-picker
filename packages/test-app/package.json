@@ -26,7 +26,6 @@
     "test": "ember test",
     "test:ember-compatibility": "ember try:one"
   },
-  "dependencies": {},
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.1.0",
@@ -45,7 +44,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.2.1",
     "ember-auto-import": "^2.7.2",
-    "ember-cli": "^6.12.0",
+    "ember-cli": "~4.4.1",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-htmlbars": "^5.7.2",
@@ -60,7 +59,7 @@
     "ember-page-title": "^6.2.2",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
-    "ember-source": "^6.12.0",
+    "ember-source": "~4.4.5",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^7.9.3",
     "ember-try": "^4.0.0",
