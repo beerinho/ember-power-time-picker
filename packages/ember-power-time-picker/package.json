@@ -16,7 +16,7 @@
     "build": "rollup --config",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:css": "stylelint \"**/*.css\" --allow-empty-input --cache\"",
+    "lint:css": "stylelint \"**/*.css\" --allow-empty-input --cache",
     "lint:css:fix": "stylelint \"**/*.css\" --allow-empty-input --fix",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
     "lint:format": "prettier . --cache --check",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
+    "@babel/eslint-parser": "^7.28.6",
     "@babel/runtime": "^7.29.2",
     "@embroider/addon-dev": "^8.3.0",
     "@glimmer/tracking": "^1.1.2",
