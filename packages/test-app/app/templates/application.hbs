@@ -1,16 +1,24 @@
 {{page-title "Ember Power Time Picker"}}
 <h2 id="title">Power-select a time</h2>
 
-selected: {{this.time}}
+selected:
+{{this.time}}
 <PowerTimePicker
-  @maxTime="12:00" @minTime="06:00" @onChange={{fn (mut this.time)}} @selected={{this.time}} @steps={{5}}
-  as |time|>
+  @maxTime="12:00"
+  @minTime="06:00"
+  @onChange={{fn (mut this.time)}}
+  @selected={{this.time}}
+  @steps={{5}}
+  as |time|
+>
   {{time}}
 </PowerTimePicker>
-<br>
+<br />
 selected will be added to options:
 <PowerTimePicker
-  @onChange={{fn (mut this.time)}} @selected="06:03"
-  as |time|>
+  @onChange={{fn (mut this.time)}}
+  @selected="06:03"
+  as |time|
+>
   {{time}}
 </PowerTimePicker>

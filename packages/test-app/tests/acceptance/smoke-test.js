@@ -13,7 +13,7 @@ module('Acceptance | smoke', function (hooks) {
 
     assert.equal(
       document.querySelector('.ember-power-select-trigger input').value,
-      '12:00'
+      '12:00',
     );
   });
 });

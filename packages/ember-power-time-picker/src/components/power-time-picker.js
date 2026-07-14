@@ -1,26 +1,26 @@
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import moment from 'moment';
-import roundTime from '../utils/round-time';
 import { indexOfOption } from 'ember-power-select/utils/group-utils';
 import { scheduler } from 'ember-raf-scheduler';
-import PowerTimePickerOptions from './power-time-picker/options';
-import PowerTimePickerTrigger from './power-time-picker/trigger';
+import moment from 'moment';
+
+import roundTime from '../utils/round-time.js';
+import PowerTimePickerOptions from './power-time-picker/options.js';
+import PowerTimePickerTrigger from './power-time-picker/trigger.js';
 
 export default class PowerTimePicker extends Component {
+  @tracked optionsComponent =
+    this.args.optionsComponent ?? PowerTimePickerOptions;
   @tracked steps = this.args.steps ?? 5;
   @tracked triggerComponent =
     this.args.triggerComponent ?? PowerTimePickerTrigger;
-  @tracked optionsComponent =
-    this.args.optionsComponent ?? PowerTimePickerOptions;
-
-  get minTime() {
-    return this.args.minTime ?? '06:00';
-  }
 
   get maxTime() {
     return this.args.maxTime ?? '22:00';
+  }
+  get minTime() {
+    return this.args.minTime ?? '06:00';
   }
 
   get options() {
@@ -43,7 +43,7 @@ export default class PowerTimePicker extends Component {
   // from power-select.js
   scrollTo(option, select) {
     let optionsList = document.getElementById(
-      `ember-power-select-options-${select.uniqueId}`
+      `ember-power-select-options-${select.uniqueId}`,
     );
     if (!optionsList) {
       return;
@@ -60,7 +60,7 @@ export default class PowerTimePicker extends Component {
       optionsList.scrollTop = Math.max(
         optionOffset -
           optionsList.getBoundingClientRect().height / 2 +
-          optionHeight / 2
+          optionHeight / 2,
       );
     });
   }

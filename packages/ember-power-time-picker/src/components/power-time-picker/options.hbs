@@ -1,19 +1,40 @@
-<ul role="listbox" {{did-insert this.addHandlers}} {{will-destroy this.removeHandlers}} ...attributes>
+{{! template-lint-disable no-at-ember-render-modifiers }}
+<ul
+  role="listbox"
+  {{did-insert this.addHandlers}}
+  {{will-destroy this.removeHandlers}}
+  ...attributes
+>
   {{#if @select.loading}}
     {{#if @loadingMessage}}
-      <li class="ember-power-select-option ember-power-select-option--loading-message" role="option" aria-selected={{false}}>{{@loadingMessage}}</li>
+      <li
+        aria-selected={{false}}
+        class="ember-power-select-option ember-power-select-option--loading-message"
+        role="option"
+      >{{@loadingMessage}}</li>
     {{/if}}
   {{/if}}
   <VerticalCollection
+    @estimateHeight="28px"
     @items={{@options}}
-    @estimateHeight="28px" as |opt index|>
-    <li class="ember-power-select-option"
-      id="{{@select.uniqueId}}-{{@groupIndex}}{{index}}"
-      aria-selected="{{ember-power-select-is-selected opt @select.selected}}"
-      aria-disabled={{if opt.disabled "true"}}
+    as |opt index|
+  >
+    {{! VerticalCollection is tagless (tagName: ''), so this option renders as a
+        direct child of the [listbox] <ul> at runtime. The static rule can't see
+        through the component, so disable it here. }}
+    {{! template-lint-disable require-context-role }}
+    <li
       aria-current="{{eq opt @select.highlighted}}"
+      aria-disabled={{if opt.disabled "true"}}
+      aria-selected="{{ember-power-select-is-selected
+        opt
+        @select.selected
+      }}"
+      class="ember-power-select-option"
       data-option-index="{{@groupIndex}}{{index}}"
-      role="option">
+      id="{{@select.uniqueId}}-{{@groupIndex}}{{index}}"
+      role="option"
+    >
       {{yield opt @select}}
     </li>
   </VerticalCollection>

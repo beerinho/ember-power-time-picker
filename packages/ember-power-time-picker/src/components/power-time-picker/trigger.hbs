@@ -1,19 +1,22 @@
-{{! template-lint-disable no-down-event-binding }}
-<input type="text"
-  value={{this.text}}
-  role="combobox"
-  id="ember-power-time-picker-input-{{@select.uniqueId}}"
-  class="ember-power-time-picker-input ember-power-select-search-input"
+{{! template-lint-disable no-pointer-down-event-binding no-at-ember-render-modifiers }}
+<input
+  aria-controls="ember-power-select-options-{{@select.uniqueId}}"
+  aria-expanded={{if @select.isOpen "true" "false"}}
+  autocapitalize="off"
   autocomplete="off"
   autocorrect="off"
-  autocapitalize="off"
-  spellcheck="false"
-  placeholder={{@placeholder}}
-  oninput={{@onInput}}
-  onfocus={{this._handleFocus}}
-  onblur={{this._handleBlur}}
+  class="ember-power-time-picker-input ember-power-select-search-input"
   disabled={{@select.disabled}}
-  onmousedown={{this._handleMousedown}}
+  id="ember-power-time-picker-input-{{@select.uniqueId}}"
+  onblur={{this._handleBlur}}
+  onfocus={{this._handleFocus}}
+  oninput={{@onInput}}
   onkeydown={{this._handleKeyDown}}
+  onmousedown={{this._handleMousedown}}
+  placeholder={{@placeholder}}
+  role="combobox"
+  spellcheck="false"
+  type="text"
+  value={{this.text}}
   {{did-update this.selectDidUpdate @select}}
->
+/>

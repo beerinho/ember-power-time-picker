@@ -1,4 +1,4 @@
-import { click,fillIn, render, triggerKeyEvent } from '@ember/test-helpers';
+import { click, fillIn, render, triggerKeyEvent } from '@ember/test-helpers';
 import { selectTime } from '@lan0/ember-power-time-picker/test-support/helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
@@ -9,7 +9,11 @@ module('Integration | Component | power-time-picker', function (hooks) {
 
   test('it highlights selected time on open', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:30" as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:30"
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -21,18 +25,23 @@ module('Integration | Component | power-time-picker', function (hooks) {
         .querySelector('.ember-power-select-option[aria-current=true]')
         .textContent.trim(),
       '06:30',
-      'it should highlight selected option by default'
+      'it should highlight selected option by default',
     );
     // scrolltop > 0 because 06:30 gets centered
     assert.ok(
       document.querySelector('.ember-power-select-options').scrollTop > 0,
-      'it should center highlighted option'
+      'it should center highlighted option',
     );
   });
 
   test('it can set minute steps', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="12:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="12:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -48,7 +57,11 @@ module('Integration | Component | power-time-picker', function (hooks) {
 
   test('it allows invalid minute steps', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @steps={{null}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @steps={{null}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -62,7 +75,13 @@ module('Integration | Component | power-time-picker', function (hooks) {
 
   test('it can set min and max time', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @maxTime="13:00" @minTime="12:00" @onChange={{fn (mut this.time)}} @selected="12:00" as |time|>
+      <PowerTimePicker
+        @maxTime="13:00"
+        @minTime="12:00"
+        @onChange={{fn (mut this.time)}}
+        @selected="12:00"
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -91,7 +110,12 @@ module('Integration | Component | power-time-picker', function (hooks) {
 
   test('it adds selected as option', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="05:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="05:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -100,13 +124,18 @@ module('Integration | Component | power-time-picker', function (hooks) {
 
     assert.equal(
       document.querySelector('.ember-power-select-trigger input').value,
-      '05:00'
+      '05:00',
     );
   });
 
   test('it does not duplicate selected item', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -121,7 +150,12 @@ module('Integration | Component | power-time-picker', function (hooks) {
 
   test('it highlights time on search', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -132,13 +166,18 @@ module('Integration | Component | power-time-picker', function (hooks) {
       document
         .querySelector('.ember-power-select-option[aria-current=true]')
         .textContent.trim(),
-      '12:00'
+      '12:00',
     );
   });
 
   test('it supports search with colons omitted', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -149,13 +188,18 @@ module('Integration | Component | power-time-picker', function (hooks) {
       document
         .querySelector('.ember-power-select-option[aria-current=true]')
         .textContent.trim(),
-      '12:15'
+      '12:15',
     );
   });
 
   test('it highlights nearest match', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -166,13 +210,18 @@ module('Integration | Component | power-time-picker', function (hooks) {
       document
         .querySelector('.ember-power-select-option[aria-current=true]')
         .textContent.trim(),
-      '13:30'
+      '13:30',
     );
   });
 
   test('it allows leading 0 to be omitted', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -183,13 +232,18 @@ module('Integration | Component | power-time-picker', function (hooks) {
       document
         .querySelector('.ember-power-select-option[aria-current=true]')
         .textContent.trim(),
-      '08:15'
+      '08:15',
     );
   });
 
   test('it allows last number to be omitted', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -199,13 +253,18 @@ module('Integration | Component | power-time-picker', function (hooks) {
       document
         .querySelector('.ember-power-select-option[aria-current=true]')
         .textContent.trim(),
-      '10:45'
+      '10:45',
     );
   });
 
   test('it allows leading zero in fuzzy search', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected="06:00" @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected="06:00"
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -215,13 +274,18 @@ module('Integration | Component | power-time-picker', function (hooks) {
       document
         .querySelector('.ember-power-select-option[aria-current=true]')
         .textContent.trim(),
-      '07:30'
+      '07:30',
     );
   });
 
   test('it fills out search input with selected value', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected={{this.time}} @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected={{this.time}}
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -229,18 +293,23 @@ module('Integration | Component | power-time-picker', function (hooks) {
     await selectTime('', '14:00');
     assert.notOk(
       document.querySelector('.ember-power-select-dropdown'),
-      'the component is closed'
+      'the component is closed',
     );
     assert.equal(
       document.querySelector('.ember-power-select-search-input').value,
       '14:00',
-      'the input contains the selected option'
+      'the input contains the selected option',
     );
   });
 
   test('it resets search value on close', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected={{this.time}} @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected={{this.time}}
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -249,22 +318,27 @@ module('Integration | Component | power-time-picker', function (hooks) {
     await triggerKeyEvent(
       '.ember-power-select-search-input',
       'keydown',
-      'Escape'
+      'Escape',
     );
     assert.notOk(
       document.querySelector('.ember-power-select-dropdown'),
-      'the component is closed'
+      'the component is closed',
     );
     assert.equal(
       document.querySelector('.ember-power-select-search-input').value,
       '',
-      'the search gets reset'
+      'the search gets reset',
     );
   });
 
   test('it resets search input value on select', async function (assert) {
     await render(hbs`
-      <PowerTimePicker @onChange={{fn (mut this.time)}} @selected={{this.time}} @steps={{15}} as |time|>
+      <PowerTimePicker
+        @onChange={{fn (mut this.time)}}
+        @selected={{this.time}}
+        @steps={{15}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
@@ -274,7 +348,7 @@ module('Integration | Component | power-time-picker', function (hooks) {
     assert.equal(
       document.querySelector('.ember-power-select-search-input').value,
       '13:15',
-      'the input gets set to selected value'
+      'the input gets set to selected value',
     );
   });
 
@@ -282,7 +356,14 @@ module('Integration | Component | power-time-picker', function (hooks) {
     this.minTime = '10:00';
     this.maxTime = '12:00';
     await render(hbs`
-      <PowerTimePicker @maxTime={{this.maxTime}} @minTime={{this.minTime}} @onChange={{fn (mut this.time)}} @selected="11:00" @steps={{30}} as |time|>
+      <PowerTimePicker
+        @maxTime={{this.maxTime}}
+        @minTime={{this.minTime}}
+        @onChange={{fn (mut this.time)}}
+        @selected="11:00"
+        @steps={{30}}
+        as |time|
+      >
         {{time}}
       </PowerTimePicker>
     `);
