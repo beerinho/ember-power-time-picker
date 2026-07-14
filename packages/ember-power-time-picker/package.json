@@ -1,6 +1,6 @@
 {
   "name": "@lan0/ember-power-time-picker",
-  "version": "1.0.0",
+  "version": "0.7.0",
   "description": "An addon for handling time selection.",
   "keywords": [
     "ember-addon"
