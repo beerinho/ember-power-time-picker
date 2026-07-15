@@ -10,5 +10,10 @@ module.exports = function (defaults) {
   });
 
   const { maybeEmbroider } = require('@embroider/test-setup');
-  return maybeEmbroider(app);
+  // staticEmberSource is required for @embroider/core's backward-compatible tests
+  // bundle to resolve ember-source's ember-testing module; it also becomes the
+  // (non-optional) default in the next Embroider major.
+  return maybeEmbroider(app, {
+    staticEmberSource: true,
+  });
 };
